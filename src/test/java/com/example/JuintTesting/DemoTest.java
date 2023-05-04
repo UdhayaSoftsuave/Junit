@@ -3,9 +3,9 @@ package com.example.JuintTesting;
 import org.junit.jupiter.api.*;
 public class DemoTest {
 
-    @BeforeEach
-    void beforeAll(){
-        System.out.println("BeforeAll executed!!");
+    @AfterEach
+    void afterEach(){
+        System.out.println("AfterEach executed!!");
     }
 
     @Test
