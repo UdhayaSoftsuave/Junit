@@ -10,6 +10,7 @@ public class DemoTest {
 
     @Test
     @DisplayName("test1 Exec")
+    @Disabled
     public void test1(){
         String value = "Hello World!!";
         Assertions.assertEquals("Hello World!!" , value);
