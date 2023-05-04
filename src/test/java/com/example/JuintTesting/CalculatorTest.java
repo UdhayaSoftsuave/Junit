@@ -40,4 +40,13 @@ public class CalculatorTest {
         Assertions.assertNull(s1);
         Assertions.assertNotNull(s2);
     }
+
+    @Test
+    @DisplayName("assertTrueFalse")
+    public void assertTrueFalse(){
+        boolean s1 = true;
+        boolean s2 = false;
+        Assertions.assertTrue(s1);
+        Assertions.assertFalse(s2);
+    }
 }
