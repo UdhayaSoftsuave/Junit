@@ -1,12 +1,11 @@
 package com.example.JuintTesting;
 
 import org.junit.jupiter.api.*;
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class DemoTest {
 
-    @AfterAll
-    void afterAll(){
-        System.out.println("AfterAll executed!!");
+    @BeforeEach
+    void beforeAll(){
+        System.out.println("BeforeAll executed!!");
     }
 
     @Test
