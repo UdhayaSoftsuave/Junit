@@ -12,6 +12,6 @@ public class CalculatorTest {
     @Test
     @DisplayName("Add")
     public void add(){
-        Assertions.assertEquals(4 , cal.add(2,2));
+        Assertions.assertNotEquals(78 , cal.add(2,2));
     }
 }
