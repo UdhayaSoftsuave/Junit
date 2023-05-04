@@ -49,4 +49,10 @@ public class CalculatorTest {
         Assertions.assertTrue(s1);
         Assertions.assertFalse(s2);
     }
+
+    @Test
+    @DisplayName("assertTrueFalse")
+    public void assertThrow(){
+        Assertions.assertThrows(ArithmeticException.class , () -> cal.div(1, 0));
+    }
 }
