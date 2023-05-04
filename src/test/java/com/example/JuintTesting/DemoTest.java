@@ -4,9 +4,9 @@ import org.junit.jupiter.api.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class DemoTest {
 
-    @BeforeAll
-    void beforeAll(){
-        System.out.println("BeforeAll executed!!");
+    @AfterAll
+    void afterAll(){
+        System.out.println("AfterAll executed!!");
     }
 
     @Test
