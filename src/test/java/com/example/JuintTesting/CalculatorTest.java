@@ -31,4 +31,13 @@ public class CalculatorTest {
         Iterable<Integer> t2 = new ArrayList<>(Arrays.asList(1,2,3,4));
         Assertions.assertIterableEquals(t1, t2);
     }
+
+    @Test
+    @DisplayName("assertNotNull")
+    public void assertNotNull(){
+        String s1 = null;
+        String s2 = "abc";
+        Assertions.assertNull(s1);
+        Assertions.assertNotNull(s2);
+    }
 }
