@@ -14,4 +14,10 @@ public class CalculatorTest {
     public void add(){
         Assertions.assertNotEquals(78 , cal.add(2,2));
     }
+
+    @Test
+    @DisplayName("assertArray")
+    public void assertArray(){
+        Assertions.assertArrayEquals(new int[]{1,2,3} , new int[]{1,2,3});
+    }
 }
