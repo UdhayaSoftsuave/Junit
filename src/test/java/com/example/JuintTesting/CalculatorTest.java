@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,6 +74,7 @@ public class CalculatorTest {
                 );
     }
 
+    @EnabledOnOs(OS.MAC)
     @Test
     @DisplayName("assertEqual")
     public void assertEqual(){
