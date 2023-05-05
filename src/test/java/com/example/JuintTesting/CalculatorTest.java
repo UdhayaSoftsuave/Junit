@@ -1,6 +1,7 @@
 package com.example.JuintTesting;
 
 import com.example.JuintTesting.calculator.Calculator;
+import com.example.JuintTesting.calculator.Student;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -65,5 +66,13 @@ public class CalculatorTest {
                     () -> Assertions.assertEquals(-4 , cal.add(-2,-2)),
                     () -> Assertions.assertNotEquals(78 , cal.add(2,2))
                 );
+    }
+
+    @Test
+    @DisplayName("assertEqual")
+    public void assertEqual(){
+        Student s1 = new Student(1l, "a","aaa");
+        Student s2 = new Student(1l, "a","aaa");
+        Assertions.assertEquals(s1.toString() , s2.toString());
     }
 }
