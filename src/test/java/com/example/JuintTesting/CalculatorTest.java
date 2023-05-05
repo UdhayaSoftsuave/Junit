@@ -37,6 +37,7 @@ public class CalculatorTest {
 
         @Test
         @DisplayName("assertNotNull")
+        @RepeatedTest(3)
         public void assertNotNull(){
             String s1 = null;
             String s2 = "abc";
