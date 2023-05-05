@@ -38,17 +38,11 @@ public class CalculatorTest {
         @Test
         @DisplayName("assertNotNull")
         @RepeatedTest(3)
-        public void assertNotNull( RepetitionInfo info){
+        public void assertNotNull(){
             String s1 = null;
             String s2 = "abc";
-            if (info.getCurrentRepetition() == 2){
-                Assertions.assertNull(s1);
-                Assertions.assertNotNull(s2);
-            }else{
-                Assertions.assertNotNull(s1);
-                Assertions.assertNull(s2);
-            }
-
+            Assertions.assertNull(s1);
+            Assertions.assertNotNull(s2);
         }
     }
 
