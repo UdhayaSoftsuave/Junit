@@ -55,4 +55,15 @@ public class CalculatorTest {
     public void assertThrow(){
         Assertions.assertThrows(ArithmeticException.class , () -> cal.div(1, 0));
     }
+
+    @Test
+    @DisplayName("assertAll")
+    public void assertAll(){
+        Assertions.assertAll(
+                    () -> Assertions.assertEquals(4 , cal.add(2,2)),
+                    () -> Assertions.assertEquals(3 , cal.add(-1,4)),
+                    () -> Assertions.assertEquals(-4 , cal.add(-2,-2)),
+                    () -> Assertions.assertNotEquals(78 , cal.add(2,2))
+                );
+    }
 }
