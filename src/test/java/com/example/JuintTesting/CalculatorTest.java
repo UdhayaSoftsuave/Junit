@@ -72,7 +72,6 @@ public class CalculatorTest {
     @DisplayName("assertEqual")
     public void assertEqual(){
         Student s1 = new Student(1l, "a","aaa");
-        Student s2 = new Student(1l, "a","aaa");
-        Assertions.assertEquals(s1.toString() , s2.toString());
+        Assertions.assertSame(s1 , s1);
     }
 }
