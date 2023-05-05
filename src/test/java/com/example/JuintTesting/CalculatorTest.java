@@ -19,7 +19,7 @@ public class CalculatorTest {
         @Test
         @DisplayName("Add")
         public void add(){
-            Assertions.assertNotEquals(78 , cal.add(2,2));
+            Assertions.assertNotEquals(78 , cal.add(2,2) , () -> "Throwing error in addition");
         }
 
         @Test
