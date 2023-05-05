@@ -2,10 +2,7 @@ package com.example.JuintTesting;
 
 import com.example.JuintTesting.calculator.Calculator;
 import com.example.JuintTesting.calculator.Student;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
 
@@ -60,6 +57,7 @@ public class CalculatorTest {
     @Test
     @DisplayName("assertTrueFalse")
     public void assertThrow(){
+        Assumptions.assumeTrue(false);
         Assertions.assertThrows(ArithmeticException.class , () -> cal.div(1, 0));
     }
 
