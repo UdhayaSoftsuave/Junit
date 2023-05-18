@@ -29,12 +29,12 @@ public class ReactiveMethods {
                 new Student("Kumar1" , 24 , "Biology"),
                 new Student("Deepak1" , 22 , "science")
         );
-        Flux<String> map = studentFlux.map(Student::getName).log();
-        map.subscribe(System.out::println);
+//        Flux<String> map = studentFlux.map(Student::getName).log();
+//        map.subscribe(System.out::println);
         Flux<String> stringFlux = studentFlux
-                .window(3)
+                .window(2)
                 .flatMap(stud -> stud.flatMap(student -> Flux.just(student.getName())))
-                .subscribeOn(parallel()).log();
+                .subscribeOn(parallel());
         stringFlux.subscribe(System.out::println);
 
 
