@@ -7,3 +7,7 @@ a.zipWith(b)                                                                    
 studentFlux.map()                                                               -> It takes any Function interface. It will return as Flux.  It  will process synchronously.
 
 studentFlux.flatMap()                                                           -> It takes any Function interface as Publisher. It will return as Flux. It will process Asynchronously.
+
+.window(n)                                                                      -> It is used to group the elements by n. It sends the data to process for next operation.
+
+.subscribeOn(parallel())                                                        -> parallel() will process the data in different threads. The subscribeOn accept only the Schedulers.

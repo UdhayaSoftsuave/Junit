@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-import reactor.util.function.Tuple2;
-import reactor.util.function.Tuple3;
+import static reactor.core.scheduler.Schedulers.parallel;
 
 public class ReactiveMethods {
 
@@ -31,9 +29,12 @@ public class ReactiveMethods {
                 new Student("Kumar1" , 24 , "Biology"),
                 new Student("Deepak1" , 22 , "science")
         );
-        Flux<String> map = studentFlux.map(Student::getName);
+        Flux<String> map = studentFlux.map(Student::getName).log();
         map.subscribe(System.out::println);
-        Flux<String> stringFlux = studentFlux.flatMap(stud -> Flux.just(stud.getName()));
+        Flux<String> stringFlux = studentFlux
+                .window(3)
+                .flatMap(stud -> stud.flatMap(student -> Flux.just(student.getName())))
+                .subscribeOn(parallel()).log();
         stringFlux.subscribe(System.out::println);
 
 
