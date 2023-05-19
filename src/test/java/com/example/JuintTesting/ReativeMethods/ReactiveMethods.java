@@ -35,7 +35,7 @@ public class ReactiveMethods {
                 .window(2)
                 .flatMap(stud -> stud.flatMap(student -> Flux.just(student.getName())))
                 .subscribeOn(parallel());
-        stringFlux.subscribe(System.out::println);
+        stringFlux.subscribe(value -> System.out.println(value));
 
 
     }
