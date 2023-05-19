@@ -11,3 +11,6 @@ studentFlux.flatMap()                                                           
 .window(n)                                                                      -> It is used to group the elements by n. It sends the data to process for next operation.
 
 .subscribeOn(parallel())                                                        -> parallel() will process the data in different threads. The subscribeOn accept only the Schedulers.
+
+stringFlux.subscribe(value -> System.out.println(value));
+stringFlux.blockLast();                                                         -> It will bock the main until it's emitting all the value.

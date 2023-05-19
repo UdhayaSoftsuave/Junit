@@ -36,6 +36,7 @@ public class ReactiveMethods {
                 .flatMap(stud -> stud.flatMap(student -> Flux.just(student.getName())))
                 .subscribeOn(parallel());
         stringFlux.subscribe(value -> System.out.println(value));
+        stringFlux.blockLast();
 
 
     }
