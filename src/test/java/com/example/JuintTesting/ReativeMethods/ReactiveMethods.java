@@ -33,7 +33,7 @@ public class ReactiveMethods {
 //        map.subscribe(System.out::println);
         Flux<String> stringFlux = studentFlux
                 .window(2)
-                .concatMap(stud -> stud.flatMap(student -> Flux.just(student.getName())))
+                .flatMapSequential(stud -> stud.flatMap(student -> Flux.just(student.getName())))
                 .subscribeOn(parallel());
         stringFlux.subscribe(value -> System.out.println(value));
         stringFlux.blockLast();

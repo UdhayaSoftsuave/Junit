@@ -8,6 +8,8 @@ studentFlux.map()                                                               
 
 studentFlux.flatMap()                                                           -> It takes any Function interface as Publisher. It will return as Flux. It will process Asynchronously.Its operators subscribe eagerly.
 
+studentFlux.flatMapSequential()                                                 -> It takes any Function interface as Publisher. It will return as Flux. It will process Asynchronously.Its operators subscribe eagerly.
+
 studentFlux.concatMap()                                                         -> It will emit the value in sequentialOrder.But Time consumption is high. It waits for each inner completion before generating the next sub-stream and subscribing to it.
 
 .window(n)                                                                      -> It is used to group the elements by n. It sends the data to process for next operation.
