@@ -1,12 +1,16 @@
 package com.example.JuintTesting.Entity;
 
+import com.example.JuintTesting.common.Salary;
+import com.example.JuintTesting.common.SalaryProcessedBy;
+import com.example.JuintTesting.service.SalaryService;
 import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Data
-public class SalaryEntity implements EmployeeHeader{
+@SalaryProcessedBy(SalaryService.class)
+public class SalaryEntity implements EmployeeHeader , Salary {
 
     private int id;
 
