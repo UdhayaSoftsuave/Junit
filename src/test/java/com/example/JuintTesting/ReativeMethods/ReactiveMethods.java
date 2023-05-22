@@ -41,6 +41,16 @@ public class ReactiveMethods {
 
     }
 
+    @Test
+    public void merge(){
+        Flux<Integer> source1 = Flux.just(1, 2, 3);
+        Flux<Integer> source2 = Flux.just(4, 5, 6);
+
+        Flux<Integer> merged = Flux.merge(source1, source2);
+
+        merged.subscribe(System.out::println);
+    }
+
     @AllArgsConstructor
     @NoArgsConstructor
     @Data
