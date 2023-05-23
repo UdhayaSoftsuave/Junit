@@ -46,7 +46,7 @@ public class ReactiveMethods {
         Flux<Integer> source1 = Flux.just(1, 2, 3);
         Flux<Integer> source2 = Flux.just(4, 5, 6);
 
-        Flux<Integer> merged = Flux.merge(source1, source2);
+        Flux<Integer> merged = source1.mergeWith(source2);
 
         merged.subscribe(System.out::println);
     }

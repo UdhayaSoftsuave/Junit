@@ -20,3 +20,5 @@ stringFlux.subscribe(value -> System.out.println(value));
 stringFlux.blockLast();                                                         -> It will block the main until it's emitting all the value.
 
 Flux.merge(a, b)                                                               ->The merge operator combines multiple publishers into a single publisher that emits the items from all the publishers in an unordered manner.
+
+a.mergeWith(b)                                                                 ->mergeWith is same as merge. The difference is merging only 2 Flux.
