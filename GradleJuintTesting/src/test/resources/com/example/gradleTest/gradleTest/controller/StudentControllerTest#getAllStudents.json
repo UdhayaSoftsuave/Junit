@@ -1,0 +1,22 @@
+{
+  "student": [
+    {
+      "_id": {
+        "$oid": "647866de4e309516a8b2a853"
+      },
+      "name": "udhaya",
+      "age": 23,
+      "std": 7,
+      "_class": "com.example.gradleTest.gradleTest.entity.Student"
+    },
+    {
+      "_id": {
+        "$oid": "647866de4e309516a8b2a856"
+      },
+      "name": "kumar",
+      "age": 24,
+      "std": 8,
+      "_class": "com.example.gradleTest.gradleTest.entity.Student"
+    }
+  ]
+}
