@@ -107,10 +107,22 @@ public class StudentControllerTest {
                 });
     }
 
-//    @GetMapping("/id/{id}")
-//    public Mono<Student> getById(@PathVariable("id") String id){
-//        return studentService.getStudentById(id);
-//    }
+    @Test
+    @UsingDataSet(locations = {"StudentControllerTest#getStudentByName.json"})
+    @ShouldMatchDataSet(location = "StudentControllerTest#getStudentByName-expected.json")
+    @IgnorePropertyValue(properties = {"student._id"})
+    public void getStudentByName() {
+
+        wtc.get().uri("/student/name/{name}","kumar")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(Student.class)
+                .consumeWith(result -> {
+                    Student view = result.getResponseBody();
+                    assertNotNull(view);
+                    assertEquals("kumar", view.getName());
+                });
+    }
 
 //    @GetMapping("/name/{name}")
 //    public Mono<Student> getByName(@PathVariable("name") String name){
