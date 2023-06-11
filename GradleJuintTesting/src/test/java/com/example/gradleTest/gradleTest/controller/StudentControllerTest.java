@@ -124,10 +124,28 @@ public class StudentControllerTest {
                 });
     }
 
-//    @GetMapping("/name/{name}")
-//    public Mono<Student> getByName(@PathVariable("name") String name){
-//        return studentService.getStudentByName(name);
-//    }
+    @Test
+    @UsingDataSet(locations = {"StudentControllerTest#updateStudent.json"})
+    @ShouldMatchDataSet(location = "StudentControllerTest#updateStudent-expected.json")
+    @IgnorePropertyValue(properties = {"student._id"})
+    public void updatedStudent() throws JSONException {
+        JSONObject command = new JSONObject();
+        command.put("name" , "kumar")
+                .put("age", 27)
+                .put("std" , 9);
+
+        wtc.put().uri("/student/{id}","6485a1e6c560a31b0887e2fe")
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromObject(command.toString()))
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(Student.class)
+                .consumeWith(result -> {
+                    Student view = result.getResponseBody();
+                    assertNotNull(view);
+                    assertEquals(27, view.getAge());
+                });
+    }
 
 //    @PutMapping("/{id}")
 //    public Mono<Student> update(@PathVariable("id") String id , @RequestBody Student student){
