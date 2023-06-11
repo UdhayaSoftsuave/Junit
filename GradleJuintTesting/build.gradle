@@ -23,6 +23,3 @@ dependencies {
 	testImplementation("io.projectreactor:reactor-test:3.2.8.RELEASE")
 }
 
-tasks.test {
-	useJUnitPlatform()
-}
