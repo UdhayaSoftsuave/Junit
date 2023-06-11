@@ -1,7 +1,6 @@
 package com.example.gradleTest.gradleTest.controller;
 
 import com.example.gradleTest.gradleTest.entity.Student;
-import com.lordofthejars.nosqlunit.core.LoadStrategyEnum;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Rule;
