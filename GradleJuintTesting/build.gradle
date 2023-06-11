@@ -14,18 +14,13 @@ repositories {
 }
 
 dependencies {
-	implementation "org.springframework.boot:spring-boot-starter-webflux"
-
-	// Test
-	testImplementation "org.springframework.boot:spring-boot-starter-test"
-
-	// Mongo
-	implementation "org.springframework.boot:spring-boot-starter-data-mongodb-reactive"
-	testImplementation "com.lordofthejars:nosqlunit-mongodb:1.0.0"
-//	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.2'
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
-	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.3.2'
-	testImplementation "io.projectreactor:reactor-test"
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+	testImplementation("junit:junit:4.12")
+	testImplementation("com.lordofthejars:nosqlunit-mongodb:0.13.1")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("io.projectreactor:reactor-test:3.2.8.RELEASE")
 }
 
 tasks.test {
