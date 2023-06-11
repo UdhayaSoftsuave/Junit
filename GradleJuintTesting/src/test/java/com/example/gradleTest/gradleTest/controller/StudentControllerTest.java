@@ -147,14 +147,19 @@ public class StudentControllerTest {
                 });
     }
 
-//    @PutMapping("/{id}")
-//    public Mono<Student> update(@PathVariable("id") String id , @RequestBody Student student){
-//        return studentService.updateStudent(id , student);
-//    }
+    @Test
+    @UsingDataSet(locations = {"StudentControllerTest#deleteStudentById.json"})
+    @ShouldMatchDataSet(location = "StudentControllerTest#deleteStudentById-expected.json")
+    @IgnorePropertyValue(properties = {"student._id"})
+    public void deleteStudentById() throws JSONException {
 
-//    @DeleteMapping("/{id}")
-//    public Mono<String> delete(@PathVariable("id") String id ){
-//        return studentService.delete(id);
-//    }
+        wtc.delete().uri("/student/{id}","6485a1e6c560a31b0887e2fe")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(String.class)
+                .consumeWith(result -> {
+                    assertEquals("Successfully deleted!!", result.getResponseBody());
+                });
+    }
 }
 
