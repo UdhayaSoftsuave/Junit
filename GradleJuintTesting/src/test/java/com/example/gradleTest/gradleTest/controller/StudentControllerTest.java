@@ -26,9 +26,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 import static com.lordofthejars.nosqlunit.mongodb.ManagedMongoDb.MongoServerRuleBuilder.newManagedMongoDbRule;
 import static com.lordofthejars.nosqlunit.mongodb.MongoDbRule.MongoDbRuleBuilder.newMongoDbRule;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.*;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -76,21 +74,22 @@ public class StudentControllerTest {
                 });
     }
 
-//    @Test
-//    @UsingDataSet(locations = {"StudentControllerTest#getAllStudents.json"})
-//    @ShouldMatchDataSet(location = "StudentControllerTest#getAllStudents-expected.json")
-//    @IgnorePropertyValue(properties = {"student._id"})
-//    public void getAllStudents() {
-//
-//        wtc.get().uri("/student")
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody(List.class)
-//                .consumeWith(result -> {
-//                    List<Student> view = (List<Student>)result.getResponseBody();
-//                    assertNotNull(view);
-//                });
-//    }
+    @Test
+    @UsingDataSet(locations = {"StudentControllerTest#getAllStudents.json"})
+    @ShouldMatchDataSet(location = "StudentControllerTest#getAllStudents-expected.json")
+    @IgnorePropertyValue(properties = {"student._id"})
+    public void getAllStudents() {
+
+        wtc.get().uri("/student")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(List.class)
+                .consumeWith(result -> {
+                    List<Student> view = (List<Student>)result.getResponseBody();
+                    assertEquals(2, view.size());
+                });
+    }
+
 //    @Test
 //    @UsingDataSet(locations = {"StudentControllerTest#getStudentById.json"})
 //    @ShouldMatchDataSet(location = "StudentControllerTest#getStudentById-expected.json")
