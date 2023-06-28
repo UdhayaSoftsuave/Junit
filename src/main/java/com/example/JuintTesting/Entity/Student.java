@@ -1,5 +1,7 @@
 package com.example.JuintTesting.Entity;
 
+import java.util.Objects;
+
 public class Student {
 
     private Long id;
@@ -58,5 +60,18 @@ public class Student {
 
     public void setStd(Integer std) {
         this.std = std;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(id, student.id) && Objects.equals(name, student.name) && Objects.equals(schoolName, student.schoolName) && Objects.equals(age, student.age) && Objects.equals(std, student.std);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, schoolName, age, std);
     }
 }
