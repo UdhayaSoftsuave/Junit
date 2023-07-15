@@ -1,5 +1,7 @@
 package com.example.JuintTesting.config;
 
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
@@ -17,5 +19,13 @@ public class RabbitMqConfig {
     @Bean
     public TopicExchange topicExchange(){
         return new TopicExchange("testing_exchange");
+    }
+
+    @Bean
+    public Binding binding(){
+        return BindingBuilder
+                .bind(queue())
+                .to(topicExchange())
+                .with("testing_key");
     }
 }
