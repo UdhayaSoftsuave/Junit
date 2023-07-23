@@ -90,7 +90,7 @@ public class RabbitMqConfig {
         container.setConcurrentConsumers(5);
 //        container.setDefaultRequeueRejected(false);
 //        container.setAutoStartup(false);
-        container.setMessageListener(new RabbitMqJsonConsumer());
+//        container.setMessageListener(new RabbitMqJsonConsumer());
         return container;
     }
 }
