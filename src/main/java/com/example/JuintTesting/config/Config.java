@@ -10,11 +10,12 @@ import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.CompositeTokenGranter;
 import org.springframework.security.oauth2.provider.OAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.TokenGranter;
+import org.springframework.security.oauth2.provider.client.ClientCredentialsTokenGranter;
+import org.springframework.security.oauth2.provider.implicit.ImplicitTokenGranter;
 import org.springframework.security.oauth2.provider.password.ResourceOwnerPasswordTokenGranter;
 import org.springframework.security.oauth2.provider.refresh.RefreshTokenGranter;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
-import org.springframework.security.oauth2.provider.token.TokenEnhancer;
-import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.*;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider;
@@ -30,7 +31,7 @@ public class Config {
     private final UserDetailsService userDetailsService;
     private final OAuth2RequestFactory oAuth2RequestFactory;
     private final TokenEnhancer tokenEnhancer;
-    private final JwtTokenStore tokenStore;
+    private final InMemoryTokenStore tokenStore;
 
     @Bean
     public TokenGranter tokenGranter() {
@@ -38,10 +39,12 @@ public class Config {
     }
 
     private List<TokenGranter> getTokenGranderList(){
-        return List.of(new ResourceOwnerPasswordTokenGranter(authenticationManager,tokenServices() , clientDetailsService, oAuth2RequestFactory));
+        return List.of(
+                new ResourceOwnerPasswordTokenGranter(authenticationManager,tokenServices() , clientDetailsService, oAuth2RequestFactory),
+                new RefreshTokenGranter(tokenServices(), clientDetailsService , oAuth2RequestFactory),
+                new ClientCredentialsTokenGranter(tokenServices(), clientDetailsService , oAuth2RequestFactory),
+        );
     }
-
-
 
     @Bean
     @Primary
