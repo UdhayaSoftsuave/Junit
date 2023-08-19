@@ -15,6 +15,7 @@ import org.springframework.security.oauth2.provider.code.AuthorizationCodeServic
 import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
@@ -67,9 +68,9 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 
 
     @Bean
-    public JwtTokenStore tokenStore(){
+    public InMemoryTokenStore tokenStore(){
 
-        return new JwtTokenStore(new JwtAccessTokenConverter());
+        return new InMemoryTokenStore();
     }
 
     @Bean
