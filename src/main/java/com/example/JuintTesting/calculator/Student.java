@@ -1,7 +1,21 @@
 package com.example.JuintTesting.calculator;
 
+import jakarta.persistence.ColumnResult;
+import jakarta.persistence.ConstructorResult;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.SqlResultSetMapping;
+
+@NamedNativeQuery(name = "Student.findStudent",
+	query = "SELECT s.name as name, s.school_name as schoolName FROM studentdemo.student as s",
+	resultSetMapping = "Map.findStudent")
+@SqlResultSetMapping(name = "Map.findStudent",
+	classes = @ConstructorResult(targetClass = StudentResponseDto.class,
+	columns = {
+			@ColumnResult(name = "name"),
+			@ColumnResult(name = "schoolName")
+}))
 
 @Entity
 public class Student {

@@ -12,7 +12,7 @@ import com.example.JuintTesting.calculator.StudentResponseDto;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long>{
 	
-    @Query(value = "SELECT s.name as name, s.school_name as schoolName FROM studentdemo.student as s", nativeQuery = true)
+    @Query(nativeQuery = true)
 	List<StudentResponseDto> findStudent();
 
 }
