@@ -27,4 +27,10 @@ public class StudentContoller {
 	public List<Student> getStudents() {
 		return repository.findAll();
 	}
+	
+	@GetMapping(value = "/get")
+	public List<StudentResponseDto> getStudent() {
+		return repository.findStudent();
+	}
+	
 }
